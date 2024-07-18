@@ -8,10 +8,11 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffe.dto/create-coffe.dto';
 import { UpdateCoffeeDto } from './dto/update-coffe.dto/update-coffe.dto';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto/pagination-query.dto';
 
 @Controller('coffees')
 export class CoffeesController {

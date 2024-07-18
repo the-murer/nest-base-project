@@ -1,12 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Coffee } from './entities/coffee.entity';
-import { CreateCoffeeDto } from './dto/create-coffe.dto/create-coffe.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
+
 import { UpdateCoffeeDto } from './dto/update-coffe.dto/update-coffe.dto';
-import { Flavor } from './entities/flavor.entity/flavor.entity';
+import { CreateCoffeeDto } from './dto/create-coffe.dto/create-coffe.dto';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
-import { Event } from 'src/events/entities/event.entity/event.entity';
+import { Flavor } from './entities/flavor.entity/flavor.entity';
+import { Event } from '../events/entities/event.entity/event.entity';
+import { Coffee } from './entities/coffee.entity';
 
 @Injectable()
 export class CoffeesService {
@@ -37,7 +38,7 @@ export class CoffeesService {
       },
     });
     if (!coffee) {
-      throw new NotFoundException(`Café #${id} não encontrado`);
+      throw new NotFoundException(`Café ${id} não encontrado`);
     }
     return coffee;
   }
@@ -67,7 +68,7 @@ export class CoffeesService {
       flavors,
     });
     if (!coffee) {
-      throw new NotFoundException(`Café #${id} não encontrado`);
+      throw new NotFoundException(`Café ${id} não encontrado`);
     }
     return this.coffeeRepository.save(coffee);
   }
